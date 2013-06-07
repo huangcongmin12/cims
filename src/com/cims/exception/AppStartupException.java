@@ -1,5 +1,12 @@
 package com.cims.exception;
 
+/**
+ * CIMS AppStartupException
+ *
+ * @author huangcongmin
+ * @version , 2013-6-7
+ * @since
+ */
 public class AppStartupException extends RuntimeException {
 
 	/**
