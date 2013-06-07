@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>CIMS_V0.0</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:/applicationContext.xml
+		</param-value>
+	</context-param>
+
+	<!-- filter start (在Struts2 的Filter之前 ) -->
+	<!-- Admin Authority Filter -->
+	<filter>
+		<filter-name>authorityAdminFilter</filter-name>
+		<filter-class>com.cims.filter.AuthorityAdminFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>authorityAdminFilter</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	<!-- student Authority Filter -->
+	<filter>
+		<filter-name>authorityStudentFilter</filter-name>
+		<filter-class>com.cims.filter.AuthorityStudentFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>authorityStudentFilter</filter-name>
+		<url-pattern>/student/*</url-pattern>
+	</filter-mapping>
+	<!-- filter end -->
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/content/error/403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/content/error/404.jsp</location>
+	</error-page>
+	<!-- <error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/content/error/500.jsp</location>
+	</error-page> -->
+
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/content/index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

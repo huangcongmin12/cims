@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<!-- 请求参数的编码方式 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	
+	<!-- 默认请求方式为xx.action,改为xx.html -->
+	<constant name="struts.action.extension" value="html" />
+
+	<!-- 当struts.xml改动后，是否重新加载。默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="false" />
+
+	<!-- 是否使用struts的开发模式。开发模式会有更多的调试信息。默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.devMode" value="false" />
+
+	<!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="true" />
+
+	<!-- 是否开启动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+	<!-- 禁用扫描 -->
+	<constant name="struts.convention.action.disableScanning" value="false" />
+
+    <!--  Overwrite Convention -->
+    <constant name="struts.convention.action.suffix" value="Controller"/>
+    
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+
+	<!--确定搜索包的路径。只要是结尾为web,admin的包都要搜索。basePackage按照默认不用配置，如果配置，只会找以此配置开头的包。locators及locators.basePackage都是一组以逗号分割的字符串。 -->
+	<constant name="struts.convention.package.locators" value="web,admin" />
+	
+	
+
+	
+</struts>
