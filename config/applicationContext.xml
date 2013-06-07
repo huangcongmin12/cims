@@ -92,15 +92,16 @@
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<!-- 用于配置详细的事务语义 -->
 		<tx:attributes>
-			<!-- 所有以'get'开头的方法是read-only的 -->
+			<!-- 所有以'get,find'开头的方法是read-only的 -->
 			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
 			<!-- 其他方法使用默认的事务设置 -->
 			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
 
 	<aop:config>
-		<!-- 配置一个切入点，匹配com.ssh.service.impl包下 所有以Impl结尾的类的所有方法的执行 -->
+		<!-- 配置一个切入点，匹配com.cims.service.impl包下 所有以Impl结尾的类的所有方法的执行 -->
 		<aop:pointcut id="Pointcut"
 			expression="execution(* com.cims.service.impl.*.*(..))" />
 		<!-- 指定在leePointcut切入点应用txAdvice事务切面 -->
